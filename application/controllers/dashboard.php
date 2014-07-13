@@ -16,7 +16,7 @@ class dashboard extends CI_Controller {
 	}
 	
 	function home() {
-		if($this->session->userdata("level") == '1'){
+		if($this->session->userdata("level") == '1' || $this->session->userdata("level") == '10'){
 			$data["main_content"]	= "users/home";
 			$this->load->view("main/template", $data);
 		} if(!$this->session->userdata("level")){		
