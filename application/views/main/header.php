@@ -18,10 +18,10 @@
         <div class="cover"><img></div>
         <div class="menu">
             <ul>
-                <li>Menu A</li>
-                <li>Menu B</li>
-                <li>Menu C</li>
-                <li><a href="logout.php">Logout</a></li>
+                <li><a href="<?php echo base_url()."index.php/dashboard/home"; ?>">Home</li>
+                <li><a href="#">Menu B</li>
+                <li><a href="#">Menu C</li>
+                <li><a href="<?php echo base_url()."index.php/dashboard/logout"; ?>">Logout</a></li>
             </ul>
         </div>
     </div>
