@@ -25,6 +25,16 @@ class dashboard extends CI_Controller {
 		}
 	}
 
+	function booking() {
+		if($this->session->userdata("level") == '1'){
+			$data["main_content"]	= "users/booking";
+			$this->load->view("main/template", $data);
+		} if(!$this->session->userdata("level")){		
+			$data["main_content"]	= "users/login";
+			$this->load->view("main/template", $data);
+		}
+	}
+
 	function logout(){
 		$this->session->sess_destroy();
 		redirect('dashboard/home');

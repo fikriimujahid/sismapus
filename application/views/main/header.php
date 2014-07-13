@@ -19,8 +19,8 @@
         <div class="menu">
             <ul>
                 <li><a href="<?php echo base_url()."index.php/dashboard/home"; ?>">Home</li>
-                <li><a href="#">Menu B</li>
-                <li><a href="#">Menu C</li>
+                <li><a href="<?php echo base_url()."index.php/dashboard/booking"; ?>">Booking Buku</li>
+                <li><a href="#">Cari Buku</li>
                 <li><a href="<?php echo base_url()."index.php/dashboard/logout"; ?>">Logout</a></li>
             </ul>
         </div>

@@ -152,3 +152,76 @@ body{
     cursor: pointer;
     color: #eee;
 }
+.isi ul{
+    position: absolute;
+    list-style: none;
+    width: calc(100% - 200px);
+    padding: 0;
+    text-align: center;
+    height: 20px;
+    margin-top: 30px;
+}
+.isi ul li{
+    display: inline-block;
+    margin-right: -4px;
+    width: 12%;
+    border: 1px solid #aaa;
+    background: #7385ad;
+    color: #eee;
+}
+.isi .isipinjam{
+    margin-top: 48px;
+}
+.isi .isipinjam li{
+    background:#fff;
+    height: 20px;
+    color: #777;
+    line-height: 20px;
+}
+.isi .isipinjam li input[type='submit']{
+    font-size: 11px;
+    border: none;
+    height: 20px;
+    cursor: pointer;
+}
+.formbuku, .formsiswa, .formpinjam{
+    position: absolute;
+    width: 300px;
+    margin-left: 50%;
+    left: -170px;
+    top: 10%;
+    border: 1px solid #555;
+    padding: 20px;
+}
+.formbuku input[type='text'], .formbuku select, .formsiswa input[type='text'], .formsiswa select, .formpinjam input[type='text']{
+    margin-top: 20px;
+    height: 30px;
+    width: 300px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.formbuku input[name='stok'], .formbuku input[name='halaman'], .formbuku input[name='tahun']{
+    width: 98px;
+}
+.formpinjam label[for='tglpinjam']{
+    padding-right: 30px;
+}
+.formpinjam label[for='tglkembali']{
+    padding-right: 22px;
+}
+.formpinjam input[type='date']{
+    width: 230px;
+    margin-top: 20px;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.formbuku input[type='submit'], .formsiswa input[type='submit'], .formpinjam input[type='submit']{
+    margin-top: 20px;
+    border: none;
+    padding: 10px;
+    width: 300px;
+    background: #7385ad;
+    color: #eee;
+    cursor: pointer;
+}
