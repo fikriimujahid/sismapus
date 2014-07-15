@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2014 at 07:02 PM
+-- Generation Time: Jul 15, 2014 at 05:46 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -33,14 +33,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `level` int(2) NOT NULL,
   `name` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `nis`, `password`, `level`, `name`) VALUES
-(1, '12345', '827ccb0eea8a706c4c34a16891f84e7b', 1, 'Fikri');
+(1, '12345', '827ccb0eea8a706c4c34a16891f84e7b', 1, 'Fikri'),
+(2, '123456', '827ccb0eea8a706c4c34a16891f84e7b', 10, 'Admin');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
