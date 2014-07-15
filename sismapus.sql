@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2014 at 05:46 PM
+-- Generation Time: Jul 15, 2014 at 07:16 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -19,6 +19,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `sismapus`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `buku`
+--
+
+CREATE TABLE IF NOT EXISTS `buku` (
+  `id` tinyint(10) NOT NULL AUTO_INCREMENT,
+  `judul` varchar(255) DEFAULT NULL,
+  `pengarang` varchar(255) DEFAULT NULL,
+  `penerbit` varchar(255) DEFAULT NULL,
+  `kategori` int(2) DEFAULT NULL,
+  `stock` int(3) DEFAULT NULL,
+  `tgl_update` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `buku`
+--
+
+INSERT INTO `buku` (`id`, `judul`, `pengarang`, `penerbit`, `kategori`, `stock`, `tgl_update`) VALUES
+(1, 'Analisis dan Desain Pengembangan Sistem Informasi ', 'Al-Bahra Bin Ladjamudin', 'Graha Ilmu', NULL, 3, '2014-07-08 17:00:00'),
+(2, 'Membuat Website Canggih dengan jQuery untuk pemula', 'Toni Kun', 'mediakita', NULL, 4, '2014-07-15 17:00:00'),
+(3, 'Membuat Aplikasi GPS & Suara Antrian dengan PHP', 'Ronal Rusli', 'Toko Media', NULL, 4, '2014-07-15 04:26:32'),
+(4, 'Pemrograman web dengan HTML Revisi Ketiga', 'Betha Sidik, Ir-Husni I. Pohan. Ir., M.Eng', 'Informatika', NULL, 4, '2014-07-15 17:00:00');
 
 -- --------------------------------------------------------
 
