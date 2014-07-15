@@ -7,5 +7,8 @@
     	<?php endforeach; ?> 
     	<span><?php echo $this->pagination->create_links(); ?></span>
     </div>
-    <div class="isibuku">test content</div>
+    <div class="isibuku">
+    	<?php //pre($this->session->all_userdata()); ?>
+    	<center>Selamat Datang <?php echo $this->session->userdata('name'); ?></center><br>
+    </div>
 </div>

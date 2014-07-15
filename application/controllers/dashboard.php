@@ -31,18 +31,22 @@ class dashboard extends CI_Controller {
 			$this->db->order_by("id","desc");
 			$buku 	= $this->db->get('buku',$config['per_page'],$offset);
 			
+			//$user	= GetValue("*", "user", array("name" => "where/".$fname));
+			
+			//$data['user']			= $user;
 			$data['buku']			= $buku->result_array();
 			$data["main_content"]	= "users/home";
 			$this->load->view("main/template", $data);
+			
 		} if(!$this->session->userdata("level")){		
 			$data["main_content"]	= "users/login";
 			$this->load->view("main/template", $data);
 		}
 	}
 
-	function booking() {
+	function peminjaman_buku() {
 		if($this->session->userdata("level") == '1'){
-			$data["main_content"]	= "users/booking";
+			$data["main_content"]	= "users/peminjaman_buku";
 			$this->load->view("main/template", $data);
 		} if(!$this->session->userdata("level")){		
 			$data["main_content"]	= "users/login";
@@ -50,9 +54,9 @@ class dashboard extends CI_Controller {
 		}
 	}
 
-	function search() {
+	function cari_buku() {
 		if($this->session->userdata("level") == '1'){
-			$data["main_content"]	= "users/search";
+			$data["main_content"]	= "users/cari_buku";
 			$this->load->view("main/template", $data);
 		} if(!$this->session->userdata("level")){		
 			$data["main_content"]	= "users/login";
