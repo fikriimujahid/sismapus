@@ -45,6 +45,34 @@ body{
     cursor: pointer;
     transition: color linear .2s;
 }
+span.submnu{
+    position:absolute;
+    display: block;
+    opacity: 0;
+    width: 140px;
+    height: auto;
+    background: #555;
+    margin-left: -9px;
+    margin-top: 10px;
+    border-top: 1px solid #aaa;
+    visibility: hidden;
+    z-index: 1;
+    transition: opacity linear .2s;
+}
+.olahuser:hover > span.submnu{
+    display: block;
+    visibility: visible;
+    opacity: 1;
+}
+.menu ul li span.submnu a{
+    display: block;
+    height: 20px;
+    width: 120px;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #aaa;
+    z-index: 9;
+}
 .menu ul li:hover{
     color: #98b8dd;
 }
@@ -104,6 +132,7 @@ body{
     top: 292px;
     border: 1px solid #aaa;
     border-radius: 3px;
+    z-index: 0;
 }
 .isibuku:empty:before{
     content: 'Isi Buku Kosong';
@@ -248,7 +277,7 @@ body{
 }
 .isiuser{
     display: inline-block;
-    width: calc(100% - 200px);
+    width: calc(100% - 2px);
     height: calc(100% - 318px);
     border-right: 1px solid #aaa;
 }
@@ -259,7 +288,7 @@ body{
 .isiuser ul{
     position: absolute;
     list-style: none;
-    width: calc(100% - 200px);
+    width: 100%;
     padding: 0;
     text-align: center;
     height: 20px;
@@ -275,8 +304,8 @@ body{
 }
 input[type='search']{
     position: absolute;
-    margin-top: -30px;
-    margin-left: 10px;
+    margin-top: 0px;
+    margin-left:10px;
 }
 .isiuser .isilooping{
     margin-top: 48px;
@@ -295,11 +324,77 @@ input[type='search']{
 }
 .info span, .infouser span{
     font-size: 14px;
-    text-align: center;
-    position: absolute;
+    display: block;
     width: 200px;
+    height: auto;
+    padding: 5px;
+    color:#777;
+    border-bottom: 1px dashed #555;
+}
+.info div.paginfo, .infouser div.paginfo{
+    position: absolute;
+    top: 560px;
+    height: auto;
+    padding: 8px;
+    width: 235px;
+    border-radius:0 0 5px 5px;
+    text-align: center;
     background: #7385ad;
-    color:#fff;
+    color: #fff;
+    border-bottom:none;
+}
+.info span a{
+    text-decoration: none;
+    color: #778ea3;
+}
+.info div.paginfo a{
+    text-decoration: none;
+    color: #1f1f1f;
+}
+.historypem{
+    position: absolute;
+    top: 33px;
+    width: calc(65% - 2px);
+    height: calc(100% - 35px);
+    border: 1px solid #555;
+}
+.dftrbook{
+    position: absolute;
+    top: 33px;
+    left: 65%;
+    width: calc(35% - 2px);
+    height: calc(100% - 35px);
+    border: 1px solid #555;
+}
+.historypem .jdlhistory, .dftrbook .jdldftr{
+    text-align: center;
     height: 30px;
     line-height: 30px;
+    margin: 0;
+    border-bottom: 1px solid #555;
+}
+.historypem ul, .dftrbook ul{
+    list-style: none;
+    padding:0;
+    margin: 0;
+    margin-left: 5px;
+}
+.historypem ul li, .dftrbook ul li{
+    display: inline-block;
+    margin-left: -4px;
+    height: 30px;
+    line-height: 30px;
+    width: calc(25% - 0px);
+    text-align: center;
+    border-right: 1px solid #555;
+    border-bottom: 1px solid #555;
+    color: #fff;
+    background: #98b8dd;
+}
+.dftrbook ul li{
+    width: calc(50% - 0px);
+}
+.historypem .isihistory li, .dftrbook .isidftr li{
+    background: #fff;
+    color: #555;
 }

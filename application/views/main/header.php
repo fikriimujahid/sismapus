@@ -31,7 +31,11 @@
         <div class="menu">
             <ul>
                 <li><a href="<?php echo base_url()."index.php/dashboard/home"; ?>">Home</li>
-                <li><a href="<?php echo base_url()."index.php/dashboard/manage_user"; ?>">Olah User</li>
+                <li class="olahuser"><a href="<?php echo base_url()."index.php/dashboard/manage_user"; ?>">Olah User</a><span class="submnu">
+                    <a href="#">Tambah User</a>
+                    <a href="#">Manage User</a>
+                    <a href="#">Aktivitas User</a>
+    </span></li>
                 <li><a href="#">Olah Buku</li>
                	<li><a href="#">Olah Peminjaman</li>
                	<li><a href="#">Laporan</li>

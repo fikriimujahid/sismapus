@@ -69,6 +69,7 @@ class GeCi
 	 */	
 	public function __construct($data=array())
 	{
+		if(!defined('__DIR__')){ define('__DIR__', dirname(__FILE__)); }
 		$this->CI=& get_instance();
 		$this->CI->load->helper('url');
 		
