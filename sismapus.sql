@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 3.1.3.1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 15, 2014 at 07:16 PM
--- Server version: 5.5.27
--- PHP Version: 5.4.7
+-- Host: localhost
+-- Generation Time: Jul 19, 2014 at 01:41 PM
+-- Server version: 5.1.33
+-- PHP Version: 5.2.9
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -19,6 +18,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `sismapus`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking`
+--
+
+CREATE TABLE IF NOT EXISTS `booking` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `nis` int(11) NOT NULL,
+  `id_buku` int(11) NOT NULL,
+  `tgl_balik` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`id`, `nis`, `id_buku`, `tgl_balik`) VALUES
+(1, 12345, 1, '2014-07-19');
 
 -- --------------------------------------------------------
 
@@ -42,10 +62,33 @@ CREATE TABLE IF NOT EXISTS `buku` (
 --
 
 INSERT INTO `buku` (`id`, `judul`, `pengarang`, `penerbit`, `kategori`, `stock`, `tgl_update`) VALUES
-(1, 'Analisis dan Desain Pengembangan Sistem Informasi ', 'Al-Bahra Bin Ladjamudin', 'Graha Ilmu', NULL, 3, '2014-07-08 17:00:00'),
-(2, 'Membuat Website Canggih dengan jQuery untuk pemula', 'Toni Kun', 'mediakita', NULL, 4, '2014-07-15 17:00:00'),
-(3, 'Membuat Aplikasi GPS & Suara Antrian dengan PHP', 'Ronal Rusli', 'Toko Media', NULL, 4, '2014-07-15 04:26:32'),
-(4, 'Pemrograman web dengan HTML Revisi Ketiga', 'Betha Sidik, Ir-Husni I. Pohan. Ir., M.Eng', 'Informatika', NULL, 4, '2014-07-15 17:00:00');
+(1, 'Analisis dan Desain Pengembangan Sistem Informasi ', 'Al-Bahra Bin Ladjamudin', 'Graha Ilmu', NULL, 3, '2014-07-09 00:00:00'),
+(2, 'Membuat Website Canggih dengan jQuery untuk pemula', 'Toni Kun', 'mediakita', NULL, 4, '2014-07-16 00:00:00'),
+(3, 'Membuat Aplikasi GPS & Suara Antrian dengan PHP', 'Ronal Rusli', 'Toko Media', NULL, 4, '2014-07-15 11:26:32'),
+(4, 'Pemrograman web dengan HTML Revisi Ketiga', 'Betha Sidik, Ir-Husni I. Pohan. Ir., M.Eng', 'Informatika', NULL, 4, '2014-07-16 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `peminjaman`
+--
+
+CREATE TABLE IF NOT EXISTS `peminjaman` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `nis` varchar(32) NOT NULL,
+  `id_buku` int(3) NOT NULL,
+  `tgl_pinjam` date DEFAULT NULL,
+  `tgl_balik` date DEFAULT NULL,
+  `denda` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `peminjaman`
+--
+
+INSERT INTO `peminjaman` (`id`, `nis`, `id_buku`, `tgl_pinjam`, `tgl_balik`, `denda`) VALUES
+(1, '12345', 1, '2014-07-05', '2014-07-20', '10000');
 
 -- --------------------------------------------------------
 
@@ -69,7 +112,3 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `nis`, `password`, `level`, `name`) VALUES
 (1, '12345', '827ccb0eea8a706c4c34a16891f84e7b', 1, 'Fikri'),
 (2, '123456', '827ccb0eea8a706c4c34a16891f84e7b', 10, 'Admin');
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

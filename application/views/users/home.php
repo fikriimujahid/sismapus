@@ -18,7 +18,7 @@
             </ul>
             <ul class="isihistory">
             	<?php if ($pinjam != null) { ?>
-	            	<?php foreach ($pinjam as $pinjams) { ?>
+	            <?php foreach ($pinjam as $pinjams) { ?>
 	                <li><?php echo GetValue("judul", "buku", array("id" => "where/".$pinjams['id_buku'])); ?></li>
 	                <li><?php echo $pinjams['tgl_pinjam'] ?></li>
 	                <li><?php echo $pinjams['tgl_balik'] ?></li>
@@ -34,8 +34,13 @@
                 <li>Tgl Tersedia</li>
             </ul>
             <ul class="isidftr">
-                <li>isi</li>
-                <li>isi</li>
+            	<?php if ($booking != null) { ?>
+            	<?php foreach ($booking as $bookings) { ?>
+	                <li><?php echo GetValue("judul", "buku", array("id" => "where/".$bookings['id_buku'])); ?></li>
+	                <li><?php echo $bookings['tgl_balik'] ?></li>
+                <?php }} else { ?>
+                	<li rowspan='3'>Tidak ada data</li> 
+                <?php } ?>
             </ul>
         </div>
     </div>
