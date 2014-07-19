@@ -19,6 +19,7 @@ class model_user extends CI_Model {
 					'id'		=> $row->id,
 					'name'		=> $row->name,
 					'level'		=> $row->level,
+					'nis'		=> $row->nis,
 					'logged_in'	=> 1
 				);
 				$this->session->set_userdata($session_data);

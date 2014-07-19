@@ -8,7 +8,6 @@
     	<div class="paginfo"><?php echo $this->pagination->create_links(); ?></div>
     </div>
     <div class="isibuku">
-    	<?php //pre($this->session->all_userdata()); ?>
     	<center>Selamat Datang <?php echo $this->session->userdata('name'); ?></center><br>
     <div class="historypem">
             <h5 class="jdlhistory">History Peminjaman Buku</h5>
@@ -16,13 +15,16 @@
                 <li>Nama Buku</li>
                 <li>Tgl Peminjaman</li>
                 <li>Tgl Pengembalian</li>
-                <li>Denda Peminjaman</li>
             </ul>
             <ul class="isihistory">
-                <li>isi</li>
-                <li>isi</li>
-                <li>isi</li>
-                <li>isi</li>
+            	<?php if ($pinjam != null) { ?>
+	            	<?php foreach ($pinjam as $pinjams) { ?>
+	                <li><?php echo GetValue("judul", "buku", array("id" => "where/".$pinjams['id_buku'])); ?></li>
+	                <li><?php echo $pinjams['tgl_pinjam'] ?></li>
+	                <li><?php echo $pinjams['tgl_balik'] ?></li>
+	            <?php }} else { ?>
+	               	<li rowspan='3'>Tidak ada data</li> 	
+	            <?php } ?>
             </ul>
         </div>
     <div class="dftrbook">
@@ -38,3 +40,4 @@
         </div>
     </div>
 </div>
+<?php pre($this->session->all_userdata()); ?>

@@ -25,15 +25,15 @@ class dashboard extends CI_Controller {
 			$config['prev_link'] = '&lt;&lt; Previous Posts';
 			$config['num_links'] = 3;
 			$this->pagination->initialize($config);
-			
 			$offset = $this->uri->segment(3);
-			
 			$this->db->order_by("id","desc");
 			$buku 	= $this->db->get('buku',$config['per_page'],$offset);
 			
+			$pinjam = GetQuery("*", "peminjaman", 'nis = '.$this->session->userdata("nis").'');
 			//$user	= GetValue("*", "user", array("name" => "where/".$fname));
 			
 			//$data['user']			= $user;
+			$data['pinjam']			= $pinjam->result_array();
 			$data['buku']			= $buku->result_array();
 			$data["main_content"]	= "users/home";
 			$this->load->view("main/template", $data);
