@@ -124,6 +124,42 @@ span.submnu{
     text-align: center;
     opacity: .1;
 }
+.info2{
+    display: inline-block;
+    width: 250px;
+    height: 300px;
+    margin-top: 40px;
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #aaa;
+}
+.info2 span{
+    position:absolute;
+    width: 220px;
+    margin-top: 55px;
+    margin-left:10px;
+}
+.info2:before{
+    position: absolute;
+    content: 'Informasi Buku Baru';
+    font-size: 24px;
+    width: 250px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #555;
+    color: #eee;
+    border-bottom:5px solid #98b8dd;
+}
+.info2:empty:after{
+    content: 'Kosong';
+    position: absolute;
+    width: 250px;
+    height: 300px;
+    line-height: 300px;
+    font-size: 40px;
+    text-align: center;
+    opacity: .1;
+}
 .isibuku{
     position: absolute;
     height: 300px;
@@ -335,7 +371,7 @@ input[name='btncari']{
     color: #777;
     line-height: 20px;
 }
-.info span, .infouser span{
+.info span, .infouser span, .info2 span{
     font-size: 14px;
     display: block;
     width: 200px;
@@ -356,7 +392,7 @@ input[name='btncari']{
     color: #fff;
     border-bottom:none;
 }
-.info span a{
+.info span a, .info2 span a{
     text-decoration: none;
     color: #778ea3;
 }

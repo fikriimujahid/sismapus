@@ -35,10 +35,17 @@
                     <a href="#">Tambah User</a>
                     <a href="#">Manage User</a>
                     <a href="#">Aktivitas User</a>
-    </span></li>
-                <li><a href="#">Olah Buku</li>
-               	<li><a href="#">Olah Peminjaman</li>
-               	<li><a href="#">Laporan</li>
+    			</span></li>
+                <li class="olahuser"><a href="<?php echo base_url()."index.php/dashboard/manage_user"; ?>">Olah Buku</a><span class="submnu">
+                    <a href="#">Tambah Buku</a>
+                    <a href="#">Update Buku</a>
+    			</span></li>
+                <li class="olahuser"><a href="<?php echo base_url()."index.php/dashboard/manage_user"; ?>">Olah Peminjaman</a><span class="submnu">
+                    <a href="#">Peminjaman Manual</a>
+                    <a href="#">Pengembalian Buku</a>
+                    <a href="#">Booking Manual</a>
+    			</span></li>
+               	<li><a href="#">Laporan Buku</li>
                 <li><a href="<?php echo base_url()."index.php/dashboard/logout"; ?>">Logout</a></li>
             </ul>
         </div>

@@ -16,7 +16,7 @@ class dashboard extends CI_Controller {
 	}
 	
 	function home() {
-		if($this->session->userdata("level") == '1' || $this->session->userdata("level") == '10'){
+		if($this->session->userdata("level") == '1'){
 			$this->load->library('pagination');
 			$config['base_url'] = base_url()."index.php/dashboard/home/";
 			$config['total_rows'] = $this->db->count_all('buku');
@@ -37,6 +37,10 @@ class dashboard extends CI_Controller {
 			$data['pinjam']			= $pinjam->result_array();
 			$data['booking']		= $booking->result_array();
 			$data['buku']			= $buku->result_array();
+			$data["main_content"]	= "users/home";
+			$this->load->view("main/template", $data);
+			
+		} if($this->session->userdata("level") == '10'){
 			$data["main_content"]	= "users/home";
 			$this->load->view("main/template", $data);
 			
@@ -68,6 +72,46 @@ class dashboard extends CI_Controller {
 		}
 	}
 
+	function panduan_laporan_buku() {
+		if($this->session->userdata("level") == '10'){
+			$data["main_content"]	= "panduan_admin/panduan_laporan_buku";
+			$this->load->view("main/template", $data);
+		} if(!$this->session->userdata("level")){		
+			$data["main_content"]	= "users/login";
+			$this->load->view("main/template", $data);
+		}
+	}	
+
+	function panduan_olah_buku() {
+		if($this->session->userdata("level") == '10'){
+			$data["main_content"]	= "panduan_admin/panduan_olah_buku";
+			$this->load->view("main/template", $data);
+		} if(!$this->session->userdata("level")){		
+			$data["main_content"]	= "users/login";
+			$this->load->view("main/template", $data);
+		}
+	}
+	
+	function panduan_olah_peminjaman() {
+		if($this->session->userdata("level") == '10'){
+			$data["main_content"]	= "panduan_admin/panduan_olah_peminjaman";
+			$this->load->view("main/template", $data);
+		} if(!$this->session->userdata("level")){		
+			$data["main_content"]	= "users/login";
+			$this->load->view("main/template", $data);
+		}
+	}
+	
+	function panduan_olah_user() {
+		if($this->session->userdata("level") == '10'){
+			$data["main_content"]	= "panduan_admin/panduan_olah_user";
+			$this->load->view("main/template", $data);
+		} if(!$this->session->userdata("level")){		
+			$data["main_content"]	= "users/login";
+			$this->load->view("main/template", $data);
+		}
+	}		
+	
 	function logout(){
 		$this->session->sess_destroy();
 		redirect('dashboard/home');

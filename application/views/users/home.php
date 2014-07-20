@@ -1,4 +1,5 @@
 <div class="tengah">
+	<?php if ($this->session->userdata('level') == '1'){ ?>
     <div class="info">
     	<?php foreach($buku as $value) : ?>
     		<?php if(date('F', strtotime($value['tgl_update'])) == date('F')) { ?>
@@ -7,9 +8,18 @@
     	<?php endforeach; ?>
     	<div class="paginfo"><?php echo $this->pagination->create_links(); ?></div>
     </div>
+    <?php } if ($this->session->userdata('level') == '10'){ ?>
+    <div class="info2">
+    	<span><a href="<?php echo base_url()."index.php/dashboard/panduan_olah_user"; ?>">Panduan Olah User</a></span><br><br>
+    	<span><a href="<?php echo base_url()."index.php/dashboard/panduan_olah_buku"; ?>">Panduan Olah Buku</a></span><br><br>
+    	<span><a href="<?php echo base_url()."index.php/dashboard/panduan_olah_peminjaman"; ?>">Panduan Olah Peminjaman</a></span><br><br>
+    	<span><a href="<?php echo base_url()."index.php/dashboard/panduan_laporan_buku"; ?>">Panduan Laporan Buku</a></span><br><br>
+    </div>
+    <?php } ?>    
     <div class="isibuku">
+    	<?php if ($this->session->userdata('level') == '1'){ ?>
     	<center>Selamat Datang <?php echo $this->session->userdata('name'); ?></center><br>
-    <div class="historypem">
+    	<div class="historypem">
             <h5 class="jdlhistory">History Peminjaman Buku</h5>
             <ul>
                 <li>Nama Buku</li>
@@ -27,7 +37,7 @@
 	            <?php } ?>
             </ul>
         </div>
-    <div class="dftrbook">
+    	<div class="dftrbook">
             <h5 class="jdldftr">Daftar Booking Buku</h5>
             <ul>
                 <li>Nama Buku</li>
@@ -43,6 +53,9 @@
                 <?php } ?>
             </ul>
         </div>
+        <?php } if ($this->session->userdata('level') == '10'){ ?>
+        
+        <?php } ?>
     </div>
 </div>
 <?php //pre($this->session->all_userdata()); ?>
