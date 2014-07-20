@@ -292,7 +292,7 @@ span.submnu{
     padding: 0;
     text-align: center;
     height: 20px;
-    margin-top: 30px;
+    margin-top: 60px;
 }
 .isiuser ul li{
     display: inline-block;
@@ -302,25 +302,38 @@ span.submnu{
     background: #7385ad;
     color: #eee;
 }
-input[type='search']{
+.formcari{
     position: absolute;
-    margin-top: 0px;
-    margin-left:10px;
+    width: 200px;
+    margin:20px;
+    left: 50%;
+    margin-left: -100px;
+}
+input[type='search']{
+    display: inline-block;
+    width: 145px;
+    height: 24px;
+    padding: 0;
+    padding-left: 10px;
+    border: 1px solid #777;
+}
+input[name='btncari']{
+    display: inline-block;
+    font-size: 11px;
+    border: 1px solid #777;
+    width: 50px;
+    padding-top: 3px;
+    height: 24px;
+    cursor: pointer;
 }
 .isiuser .isilooping{
-    margin-top: 48px;
+    margin-top: 78px;
 }
 .isiuser .isilooping li{
     background:#fff;
     height: 20px;
     color: #777;
     line-height: 20px;
-}
-.isiuser .isilooping li input[type='submit']{
-    font-size: 11px;
-    border: none;
-    height: 20px;
-    cursor: pointer;
 }
 .info span, .infouser span{
     font-size: 14px;

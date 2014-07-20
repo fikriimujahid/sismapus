@@ -20,7 +20,7 @@
             <ul>
                 <li><a href="<?php echo base_url()."index.php/dashboard/home"; ?>">Home</li>
                 <li><a href="<?php echo base_url()."index.php/dashboard/peminjaman_buku"; ?>">Peminjaman Buku</li>
-                <li><a href="<?php echo base_url()."index.php/dashboard/cari_buku"; ?>">Cari Buku</li>
+                <li><a href="<?php echo base_url()."index.php/dashboard/panduan"; ?>">Panduan</li>
                 <li><a href="<?php echo base_url()."index.php/dashboard/logout"; ?>">Logout</a></li>
             </ul>
         </div>

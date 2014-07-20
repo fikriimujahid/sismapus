@@ -48,6 +48,8 @@ class dashboard extends CI_Controller {
 
 	function peminjaman_buku() {
 		if($this->session->userdata("level") == '1'){
+			
+			$data['pencarian']		= null;
 			$data["main_content"]	= "users/peminjaman_buku";
 			$this->load->view("main/template", $data);
 		} if(!$this->session->userdata("level")){		
@@ -56,9 +58,9 @@ class dashboard extends CI_Controller {
 		}
 	}
 
-	function cari_buku() {
+	function panduan() {
 		if($this->session->userdata("level") == '1'){
-			$data["main_content"]	= "users/cari_buku";
+			$data["main_content"]	= "users/panduan";
 			$this->load->view("main/template", $data);
 		} if(!$this->session->userdata("level")){		
 			$data["main_content"]	= "users/login";

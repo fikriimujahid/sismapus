@@ -45,4 +45,4 @@
         </div>
     </div>
 </div>
-<?php pre($this->session->all_userdata()); ?>
+<?php //pre($this->session->all_userdata()); ?>
