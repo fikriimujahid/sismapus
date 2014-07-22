@@ -51,10 +51,10 @@ class dashboard extends CI_Controller {
 	}
 
 	function peminjaman_buku() {
-		if($this->session->userdata("level") == '1'){
+		if($this->session->userdata("level") == '1' || $this->session->userdata("level") == '10'){
 			
 			$data['pencarian']		= null;
-			$data["main_content"]	= "users/peminjaman_buku";
+			$data["main_content"]	= "buku/peminjaman_buku";
 			$this->load->view("main/template", $data);
 		} if(!$this->session->userdata("level")){		
 			$data["main_content"]	= "users/login";

@@ -35,9 +35,9 @@
                     <a href="<?php echo base_url()."index.php/user/tambah_user"; ?>">Tambah User</a>
                     <a href="<?php echo base_url()."index.php/user/manage_user"; ?>">Manage User</a>
     			</span></li>
-                <li class="olahuser"><a href="<?php echo base_url()."index.php/dashboard/manage_user"; ?>">Olah Buku</a><span class="submnu">
-                    <a href="#">Tambah Buku</a>
-                    <a href="#">Update Buku</a>
+                <li class="olahuser"><a href="#">Olah Buku</a><span class="submnu">
+                    <a href="<?php echo base_url()."index.php/buku/tambah_buku"; ?>">Tambah Buku</a>
+                    <a href="<?php echo base_url()."index.php/buku/edit_buku"; ?>">Manage Buku</a>
     			</span></li>
                 <li class="olahuser"><a href="<?php echo base_url()."index.php/dashboard/manage_user"; ?>">Olah Peminjaman</a><span class="submnu">
                     <a href="#">Peminjaman Manual</a>
