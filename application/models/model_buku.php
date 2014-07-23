@@ -64,7 +64,7 @@ class model_buku extends CI_Model {
 		return $query;
 	}
 	
-	function delete($id) {
-		$this->db->delete('article',array('id'=>$id));
+	function delete($table, $id) {
+		$this->db->delete($table,array('id'=>$id));
 	}			
 }

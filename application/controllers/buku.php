@@ -165,6 +165,49 @@ class buku extends CI_Controller {
 				$this->load->view("main/template", $data);
 			}
 		}
-	}			
+	}
+
+/*************************************
+	Olah Kategori
+*************************************/
+
+	function kategori($type = null, $id = null) {
+		if($this->session->userdata("level") == '10'){
+			if($type == null) {
+				$data_kategori = GetQuery('*', 'kategori');
+				$data['kategori']		= $data_kategori->result_array();
+				$data["main_content"]	= "buku/kategori";
+				$this->load->view("main/template", $data);
+			} if ($type == 'ins') {
+				$this->form_validation->set_rules('nama','Nama Kategori', 'trim|required|min_length[5]|max_length[150]|xss_clean');
+				
+				if($this->form_validation->run() == FALSE) {
+					$data_kategori = GetQuery('*', 'kategori');
+					$data['kategori']		= $data_kategori->result_array();
+					$data["main_content"]	= "buku/kategori";
+					$this->load->view('main/template',$data);
+				} else {
+					$post 		= $this->input->post();
+					$nama 		= $post['nama'];
+					
+					Insert("kategori", array(
+						"id" 	   		=> NULL,
+						"nama_kategori" => $nama
+						));
+					
+					$this->session->set_flashdata('flash_message','Kategori Berhasil ditambah');
+					redirect(base_url()."index.php/buku/kategori");
+				}			
+			} if ($type == 'del') {
+				$this->load->model('model_buku');
+				$this->model_buku->delete('kategori',$id);
+				$this->session->set_flashdata('flash_message','Kategori berhasil dihapus');
+				redirect(base_url().'index.php/buku/kategori');
+			}
+		} if(!$this->session->userdata("level")){		
+			$data["main_content"]	= "users/login";
+			$this->load->view("main/template", $data);
+		}
+	}
 }
 ?>
