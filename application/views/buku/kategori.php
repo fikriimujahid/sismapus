@@ -9,7 +9,6 @@
     <input type="submit" value="Submit" name="pinjam">
 </form>
 </div>
-<br><br><br><br><br><br><br><br>
 <div class="isiuser">
     <ul>
         <li>ID Kategori</li>
@@ -17,11 +16,11 @@
         <li>Action</li>
     </ul>
     <!-- while looping-->
+    <?php foreach ($kategori as $value) { ?>
     <ul class="isilooping">
-    	<?php foreach ($kategori as $value) { ?>
 	        <li><?php echo $value['id'] ?></li>
 	        <li><?php echo $value['nama_kategori'] ?></li>
 	        <li><a href="<?php echo base_url()."index.php/buku/kategori/del/".$value['id']; ?>">Hapus</a></li>
-	    <?php } ?>
-    </ul>
+     </ul>
+        <?php } ?>
 </div>

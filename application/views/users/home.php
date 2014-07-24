@@ -26,16 +26,21 @@
                 <li>Tgl Peminjaman</li>
                 <li>Tgl Pengembalian</li>
             </ul>
+            
+            <!-- Looping sebelum ul -->
+            <?php if ($pinjam != null) { ?>
+            <?php foreach ($pinjam as $pinjams) { ?>
             <ul class="isihistory">
-            	<?php if ($pinjam != null) { ?>
-	            <?php foreach ($pinjam as $pinjams) { ?>
-	                <li><?php echo GetValue("judul", "buku", array("id" => "where/".$pinjams['id_buku'])); ?></li>
+	                <li title="<?php echo GetValue("judul", "buku", array("id" => "where/".$pinjams['id_buku'])); ?>"><?php echo GetValue("judul", "buku", array("id" => "where/".$pinjams['id_buku'])); ?></li>
 	                <li><?php echo $pinjams['tgl_pinjam'] ?></li>
 	                <li><?php echo $pinjams['tgl_balik'] ?></li>
-	            <?php }} else { ?>
-	               	<li rowspan='3'>Tidak ada data</li> 	
-	            <?php } ?>
             </ul>
+	        <?php }} else { ?>
+            <ul class="isihistory">
+	               	<li rowspan='3'>Tidak ada data</li> 
+            </ul>
+	            <?php } ?>
+            <!-- akhir looping -->
         </div>
     	<div class="dftrbook">
             <h5 class="jdldftr">Daftar Booking Buku</h5>
@@ -43,15 +48,19 @@
                 <li>Nama Buku</li>
                 <li>Tgl Tersedia</li>
             </ul>
+            
+            <?php if ($booking != null) { ?>
+            <?php foreach ($booking as $bookings) { ?>
             <ul class="isidftr">
-            	<?php if ($booking != null) { ?>
-            	<?php foreach ($booking as $bookings) { ?>
-	                <li><?php echo GetValue("judul", "buku", array("id" => "where/".$bookings['id_buku'])); ?></li>
+	                <li title="<?php echo GetValue("judul", "buku", array("id" => "where/".$bookings['id_buku'])); ?>"><?php echo GetValue("judul", "buku", array("id" => "where/".$bookings['id_buku'])); ?></li>
 	                <li><?php echo $bookings['tgl_balik'] ?></li>
-                <?php }} else { ?>
-                	<li rowspan='3'>Tidak ada data</li> 
-                <?php } ?>
             </ul>
+                <?php }} else { ?>
+             <ul class="isidftr">
+                	<li rowspan='3'>Tidak ada data</li>
+            </ul>
+                <?php } ?>
+            
         </div>
         <?php } if ($this->session->userdata('level') == '10'){ ?>
         

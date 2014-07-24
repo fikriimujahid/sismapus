@@ -7,7 +7,6 @@
 </form>
 </div>
 <?php if($pencarian != null){ ?>
-<br><br><br><br><br><br><br><br>
 <div class="isiuser">
     <ul>
         <li>ID Buku</li>
@@ -21,9 +20,8 @@
         <?php if($this->session->userdata("level") == '10') {?><li>Update Buku</li> <?php }?>
     </ul>
     <!-- while looping-->
-    
+    <?php foreach ($pencarian as $value) { ?>
     <ul class="isilooping">
-    	<?php foreach ($pencarian as $value) { ?>
 	        <li><?php echo $value['id'] ?></li>
 	        <li><?php echo $value['judul'] ?></li>
 	        <li><?php echo $value['pengarang'] ?></li>
@@ -38,7 +36,7 @@
 	        }?></li>
 	        <li><a href="<?php echo base_url()."index.php/buku/pinjam_buku/".$value['id']; ?>">Pinjam Buku</a></li>
 	        <?php if($this->session->userdata("level") == '10') {?><li><a href="<?php echo base_url()."index.php/buku/edit_buku/src/".$value['id']; ?>">Update Buku</a></li><?php }?>
+        </ul>
 	    <?php } ?>
-    </ul>
 </div>	
 <?php } ?>

@@ -10,7 +10,6 @@
 </form>
 </div>
 <?php if($pencarian != null){ ?>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <div class="formsiswa">
 	<form method="post" enctype="multipart/form-data" action="<?php echo base_url()."index.php/user/manage_user/ins"; ?>" accept-charset="utf-8">
 		<div class="warning">

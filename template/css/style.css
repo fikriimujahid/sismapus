@@ -194,12 +194,13 @@ span.submnu{
 .lgn{
     position: absolute;
     background: rgba(200,200,200,.7);
-    width: 160px;
-    height: 100px;
-    padding: 50px;
+    width: 300px;
+    height: auto;
+    padding: 20px;
     left: 50%;
-    margin-left: -130px;
-    margin-top: 200px;
+    text-align: center;
+    margin-left: -160px;
+    margin-top: 150px;
     border: 5px solid #555;
     border-radius: 3px;
 }
@@ -207,11 +208,10 @@ span.submnu{
     width: 200px;
     height: 30px;
     margin-top: 10px;
-    margin-left: -20px;
     text-align: center;
 }
 #username{
-    margin-top: -10px;
+    margin-top: 10px;
 }
 #btnlgn{
     background: #98b8dd;
@@ -219,7 +219,6 @@ span.submnu{
     width: 200px;
     height: 30px;
     margin-top: 20px;
-    margin-left: -20px;
     cursor: pointer;
     color: #eee;
 }
@@ -256,13 +255,17 @@ span.submnu{
     cursor: pointer;
 }
 .formbuku, .formsiswa, .formpinjam{
-    position: absolute;
+    position: relative;
     width: 300px;
     margin-left: 50%;
+    margin-bottom: 50px;
     left: -170px;
-    top: 270px;
+    top: 40px;
     border: 1px solid #555;
     padding: 20px;
+}
+.formpinjam{
+    margin-bottom: -1px;
 }
 .formbuku input[type='text'], .formbuku select, .formsiswa input[type='text'], .formsiswa select, .formpinjam input[type='text']{
     margin-top: 20px;
@@ -270,6 +273,9 @@ span.submnu{
     width: 280px;
     padding-left: 10px;
     padding-right: 10px;
+}
+.formbuku select, .formsiswa select{
+    width: 303px;
 }
 .formbuku input[name='stok'], .formbuku input[name='halaman'], .formbuku input[name='tahun']{
     width: 98px;
@@ -297,10 +303,8 @@ span.submnu{
     cursor: pointer;
 }
 .warning{
-    position: absolute;
-    width: 260px;
-    margin-left: -50px;
-    margin-top: -270px;
+    position: relative;
+    width: 300px;
 }
 .warning .btn-xs{
     color: #eee;
@@ -320,23 +324,52 @@ span.submnu{
 .isiuser{
     height: calc(100% - 305px);
     padding: 0;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 .isiuser ul{
-    position: absolute;
+    position: relative;
     list-style: none;
     width: 100%;
     padding: 0;
     text-align: center;
     height: 20px;
-    margin-top: 60px;
 }
 .isiuser ul li{
     display: inline-block;
     margin-right: -4px;
-    width: 12%;
+    min-width: 10%;
+    max-width: 10%;
+    width: auto;
+    height: 30px;
+    line-height: 30px;
     border: 1px solid #aaa;
     background: #7385ad;
     color: #eee;
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis; /* atau "clip" */
+}
+.isiuser .isilooping{
+    margin-top: -2px;
+}
+.isiuser .isilooping li{
+    position: relative;
+    background:#fff;
+    height: 20px;
+    color: #777;
+    height: 30px;
+    line-height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis; /* atau "clip" */
+}
+.isiuser .isilooping li a{
+    text-decoration: none;
 }
 .formcari{
     position: absolute;
@@ -361,15 +394,6 @@ input[name='btncari']{
     padding-top: 3px;
     height: 24px;
     cursor: pointer;
-}
-.isiuser .isilooping{
-    margin-top: 78px;
-}
-.isiuser .isilooping li{
-    background:#fff;
-    height: 20px;
-    color: #777;
-    line-height: 20px;
 }
 .info span, .infouser span, .info2 span{
     font-size: 14px;
@@ -403,15 +427,19 @@ input[name='btncari']{
 .historypem{
     position: absolute;
     top: 33px;
-    width: calc(65% - 2px);
+    padding:0;
+    margin: 0;
+    width: calc(66% - 2px);
     height: calc(100% - 35px);
     border: 1px solid #555;
 }
 .dftrbook{
     position: absolute;
     top: 33px;
-    left: 65%;
-    width: calc(35% - 2px);
+    padding: 0;
+    margin: 0;
+    left: 66%;
+    width: calc(34% - 2px);
     height: calc(100% - 35px);
     border: 1px solid #555;
 }
@@ -422,28 +450,41 @@ input[name='btncari']{
     margin: 0;
     border-bottom: 1px solid #555;
 }
+.historypem ul:nth-child(2), .dftrbook ul:nth-child(2){
+    background: #98b8dd;
+}
 .historypem ul, .dftrbook ul{
     list-style: none;
-    padding:0;
+    width: 100%;
+    height: 30px;
+    padding: 0;
     margin: 0;
-    margin-left: 5px;
+    text-align: center;
+    border-bottom: 1px solid #555;
 }
 .historypem ul li, .dftrbook ul li{
     display: inline-block;
     margin-left: -4px;
     height: 30px;
     line-height: 30px;
-    width: calc(25% - 0px);
+    width: calc(33% - 0px);
     text-align: center;
     border-right: 1px solid #555;
-    border-bottom: 1px solid #555;
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis; /* atau "clip" */
     color: #fff;
-    background: #98b8dd;
+}
+.historypem ul li:last-child, .dftrbook ul li:last-child{
+    border-right: none;
 }
 .dftrbook ul li{
-    width: calc(50% - 0px);
+    width: calc(50% - 4px);
 }
 .historypem .isihistory li, .dftrbook .isidftr li{
     background: #fff;
     color: #555;
+    margin-top: 0px;
 }
