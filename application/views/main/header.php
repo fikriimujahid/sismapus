@@ -40,8 +40,8 @@
                     <a href="<?php echo base_url()."index.php/buku/edit_buku"; ?>">Manage Buku</a>
                     <a href="<?php echo base_url()."index.php/buku/kategori"; ?>">Manage Kategori</a>
     			</span></li>
-                <li class="olahuser"><a href="<?php echo base_url()."index.php/dashboard/manage_user"; ?>">Olah Peminjaman</a><span class="submnu">
-                    <a href="#">Peminjaman Manual</a>
+                <li class="olahuser"><a href="#">Olah Peminjaman</a><span class="submnu">
+                    <a href="<?php echo base_url()."index.php/dashboard/peminjaman_manual"; ?>">Peminjaman Manual</a>
                     <a href="#">Pengembalian Buku</a>
                     <a href="#">Booking Manual</a>
     			</span></li>

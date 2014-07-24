@@ -1,3 +1,7 @@
+<center><div class="warning">
+	<?php echo validation_errors('<p class="btn btn-xs btn-danger">'); ?>
+	<?php $flashmessage = $this->session->flashdata('flash_message'); if($flashmessage) { echo '<p class="btn btn-xs btn-info">'.$flashmessage.'</p>'; } ?>				    
+</div></center>	
 <div class="tengah">
 	<?php if ($this->session->userdata('level') == '1'){ ?>
     <div class="info">

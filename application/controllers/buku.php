@@ -57,7 +57,7 @@ class buku extends CI_Controller {
 				"stock"	=> $stock
 				), array("id" => "where/".$id_buku));
 		}		
-		redirect(base_url()."index.php/buku/peminjaman_buku");
+		redirect(base_url()."index.php/dashboard/home");
 	}
 
 /*************************************
@@ -209,5 +209,11 @@ class buku extends CI_Controller {
 			$this->load->view("main/template", $data);
 		}
 	}
+
+/*************************************
+	Olah Peminjaman
+*************************************/
+
+
 }
 ?>
