@@ -16,7 +16,7 @@ class buku extends CI_Controller {
 	}
 	
 /*************************************
-	Cari Buku
+	Cari & Booking Buku
 *************************************/
 
 	public function cari_buku(){
@@ -116,15 +116,16 @@ class buku extends CI_Controller {
 	function edit_buku($type = null, $id = null) {
 		if($this->session->userdata("level") == '10'){
 			if($type == null) {
-				$data['pencarian']		= null;
-				$data["main_content"]	= "buku/peminjaman_buku";
+				$data['buku']		= null;
+				$data["main_content"]	= "buku/manage_buku";
 				$this->load->view("main/template", $data);
 			} if ($type == 'src') {
+				//$id 	= $this->input->post('')
 				$data_buku 				= GetQuery('*', 'buku', "id = '".$id."'");
 				$data_kategori = GetQuery('*', 'kategori');
 				$data['kategori']		= $data_kategori->result_array();
 				$data['buku']			= $data_buku->row_array();
-				$data["main_content"]	= "buku/tambah_buku";
+				$data["main_content"]	= "buku/manage_buku";
 				$this->load->view('main/template',$data);
 			} if ($type == 'ins') {
 				$this->form_validation->set_rules('judul','Judul Buku', 'trim|required|min_length[5]|max_length[150]|xss_clean');
@@ -168,7 +169,7 @@ class buku extends CI_Controller {
 	}
 
 /*************************************
-	Olah Kategori
+	Kategori
 *************************************/
 
 	function kategori($type = null, $id = null) {
@@ -211,9 +212,121 @@ class buku extends CI_Controller {
 	}
 
 /*************************************
-	Olah Peminjaman
+	Peminjaman Manual
 *************************************/
 
+	function peminjaman_manual($type = null) {
+		if($this->session->userdata("level") == '10'){
+			if($type == null) {
+				$data["main_content"]	= "buku/peminjaman_manual";
+				$this->load->view("main/template", $data);
+			} if ($type == 'pjm') {
+				$this->load->model('model_user');
+				$this->form_validation->set_rules('id','ID Buku', 'trim|required|min_length[1]|max_length[50]|xss_clean');
+				$this->form_validation->set_rules('nis','NIS Peminjam', 'trim|required|min_length[5]|max_length[50]|xss_clean');
+				
+				if($this->form_validation->run() == FALSE) {
+					$data["main_content"]	= "buku/peminjaman_manual";
+					$this->load->view('main/template',$data);
+				} else {
+					$id_buku = $this->input->post('id');
+					$nis	 = $this->input->post('nis');
+					$booking = GetQuery("id", "booking", 'id_buku = '.$id_buku.'')->row_array();
+					if ($booking == null) {
+						$buku = GetQuery("id", "buku", 'id = '.$id_buku.'')->row_array();
+						if ($buku == null) {
+							$this->session->set_flashdata('flash_message','ID Buku Salah');
+							redirect(base_url()."index.php/buku/peminjaman_manual");
+						} else if ($buku != null) {
+							$tgl_balik 	= date("Y-m-d",strtotime("+1 week"));
+							$tgl_pinjam = date("Y-m-d");
+							
+							Insert("peminjaman", array(
+								"id" 	   	=> NULL,
+								"nis"		=> $nis,
+								"id_buku"	=> $id_buku,
+								"tgl_pinjam"=> $tgl_pinjam,
+								"tgl_balik"	=> $tgl_balik
+								));
+								
+							$stock = GetQuery("stock", "buku", 'id = '.$id_buku.'')->row_array();
+							$stock = $stock['stock'] - 1;
+								
+							Update("buku", array(
+								"stock"	=> $stock
+								), array("id" => "where/".$id_buku));
+						}							
+					} else if($booking['id'] != null) {
+						$cek = GetQuery("id", "booking", 'id_buku = '.$id_buku.' && nis = '.$nis.'')->row_array();
+						if($cek == null) {
+							$this->session->set_flashdata('flash_message','Buku Sedang Dibooking');
+							redirect(base_url()."index.php/buku/peminjaman_manual");
+						} else if($cek != null) {
+							$tgl_balik 	= date("Y-m-d",strtotime("+1 week"));
+							$tgl_pinjam = date("Y-m-d");
+							$id 		= $cek['id'];
+							Insert("peminjaman", array(
+								"id" 	   	=> NULL,
+								"nis"		=> $nis,
+								"id_buku"	=> $id_buku,
+								"tgl_pinjam"=> $tgl_pinjam,
+								"tgl_balik"	=> $tgl_balik
+								));
+							
+							$this->load->model('model_buku');
+							$this->model_buku->delete('booking',$id);
+							$this->session->set_flashdata('flash_message','Buku Berhasil Dipinjam');
+							redirect(base_url()."index.php/buku/peminjaman_manual");													
+						}
+					}		
+				}			
+			}
+		} if(!$this->session->userdata("level")){		
+			$data["main_content"]	= "users/login";
+			$this->load->view("main/template", $data);
+		}
+	}
 
+/*************************************
+	Pengembalian Buku
+*************************************/
+
+	function pengembalian_buku($type = null) {
+		if($this->session->userdata("level") == '10'){
+			if($type == null) {
+				$data["main_content"]	= "buku/pengembalian_buku";
+				$this->load->view("main/template", $data);
+			} if ($type == 'blk') {
+				$this->load->model('model_user');
+				$this->form_validation->set_rules('id','ID Buku', 'trim|required|min_length[1]|max_length[50]|xss_clean');
+				$this->form_validation->set_rules('nis','NIS Peminjam', 'trim|required|min_length[5]|max_length[50]|xss_clean');
+				
+				if($this->form_validation->run() == FALSE) {
+					$data["main_content"]	= "buku/pengembalian_buku";
+					$this->load->view('main/template',$data);
+				} else {
+					$id_buku 	= $this->input->post('id');
+					$nis 		= $this->input->post('nis');
+					$tgl_balik	= date("Y-m-d");
+					$status		= 0;
+					
+					$data_buku = array(
+						'tgl_balik'	=> $tgl_balik,
+						'status'	=> $status
+					);
+					
+					$this->db->where('id_buku', $id_buku);
+					$this->db->where('nis', $nis);
+					$this->db->update('peminjaman', $data_buku);
+					
+					$this->session->set_flashdata('flash_message','Buku Berhasil Dikembalikan');
+					redirect(base_url()."index.php/buku/pengembalian_buku");									
+				}			
+			}
+		} if(!$this->session->userdata("level")){		
+			$data["main_content"]	= "users/login";
+			$this->load->view("main/template", $data);
+		}
+	}
 }
 ?>
