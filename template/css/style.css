@@ -467,7 +467,7 @@ input[name='btncari']{
     margin-left: -4px;
     height: 30px;
     line-height: 30px;
-    width: calc(33% - 0px);
+    width: calc(25% - 3px);
     text-align: center;
     border-right: 1px solid #555;
     white-space: nowrap;

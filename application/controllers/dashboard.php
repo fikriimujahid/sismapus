@@ -62,18 +62,6 @@ class dashboard extends CI_Controller {
 		}
 	}
 
-	function peminjaman_manual() {
-		if($this->session->userdata("level") == '1' || $this->session->userdata("level") == '10'){
-			
-			$data['pencarian']		= null;
-			$data["main_content"]	= "buku/peminjaman_buku";
-			$this->load->view("main/template", $data);
-		} if(!$this->session->userdata("level")){		
-			$data["main_content"]	= "users/login";
-			$this->load->view("main/template", $data);
-		}
-	}
-
 	function panduan() {
 		if($this->session->userdata("level") == '1'){
 			$data["main_content"]	= "users/panduan";
@@ -123,6 +111,17 @@ class dashboard extends CI_Controller {
 			$this->load->view("main/template", $data);
 		}
 	}		
+
+	function laporan() {
+		if($this->session->userdata("level") == '10'){
+			$data['pencarian']		= null;
+			$data["main_content"]	= "laporan";
+			$this->load->view("main/template", $data);
+		} if(!$this->session->userdata("level")){		
+			$data["main_content"]	= "users/login";
+			$this->load->view("main/template", $data);
+		}
+	}	
 	
 	function logout(){
 		$this->session->sess_destroy();

@@ -29,8 +29,9 @@
                 <li>Nama Buku</li>
                 <li>Tgl Peminjaman</li>
                 <li>Tgl Pengembalian</li>
+                <li>Status</li>
             </ul>
-            
+
             <!-- Looping sebelum ul -->
             <?php if ($pinjam != null) { ?>
             <?php foreach ($pinjam as $pinjams) { ?>
@@ -38,6 +39,7 @@
 	                <li title="<?php echo GetValue("judul", "buku", array("id" => "where/".$pinjams['id_buku'])); ?>"><?php echo GetValue("judul", "buku", array("id" => "where/".$pinjams['id_buku'])); ?></li>
 	                <li><?php echo $pinjams['tgl_pinjam'] ?></li>
 	                <li><?php echo $pinjams['tgl_balik'] ?></li>
+	                <?php if($pinjams['status'] == 1)  {?><li>Belum Dikembalikan</li><?php } else if($pinjams['status'] == 0) { echo '<li>Sudah Dikembalikan</li>';} ?>
             </ul>
 	        <?php }} else { ?>
             <ul class="isihistory">

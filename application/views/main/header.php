@@ -41,11 +41,10 @@
                     <a href="<?php echo base_url()."index.php/buku/kategori"; ?>">Manage Kategori</a>
     			</span></li>
                 <li class="olahuser"><a href="#">Olah Peminjaman</a><span class="submnu">
-                    <a href="<?php echo base_url()."index.php/dashboard/peminjaman_manual"; ?>">Peminjaman Manual</a>
-                    <a href="#">Pengembalian Buku</a>
-                    <a href="#">Booking Manual</a>
+                    <a href="<?php echo base_url()."index.php/buku/peminjaman_manual"; ?>">Peminjaman Manual</a>
+                    <a href="<?php echo base_url()."index.php/buku/pengembalian_buku"; ?>">Pengembalian Buku</a>
     			</span></li>
-               	<li><a href="#">Laporan Buku</li>
+               	<li><a href="<?php echo base_url()."index.php/dashboard/laporan"; ?>">Laporan Buku</li>
                 <li><a href="<?php echo base_url()."index.php/dashboard/logout"; ?>">Logout</a></li>
             </ul>
         </div>
