@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 20, 2014 at 11:27 AM
+-- Generation Time: Aug 06, 2014 at 02:01 PM
 -- Server version: 5.1.33
 -- PHP Version: 5.2.9
 
@@ -32,14 +32,14 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `tgl_balik` date NOT NULL,
   `booking` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `booking`
 --
 
 INSERT INTO `booking` (`id`, `nis`, `id_buku`, `tgl_balik`, `booking`) VALUES
-(1, 12345, 1, '2014-07-19', 1);
+(17, 12345, 2, '2014-07-31', 1);
 
 -- --------------------------------------------------------
 
@@ -63,10 +63,30 @@ CREATE TABLE IF NOT EXISTS `buku` (
 --
 
 INSERT INTO `buku` (`id`, `judul`, `pengarang`, `penerbit`, `kategori`, `stock`, `tgl_update`) VALUES
-(1, 'Analisis dan Desain Pengembangan Sistem Informasi ', 'Al-Bahra Bin Ladjamudin', 'Graha Ilmu', NULL, 0, '2014-07-20 10:23:07'),
-(2, 'Membuat Website Canggih dengan jQuery untuk pemula', 'Toni Kun', 'mediakita', NULL, 4, '2014-07-16 00:00:00'),
+(1, 'Analisis dan Desain Pengembangan Sistem Informasi', 'Al-Bahra Bin Ladjamudin', 'Graha Ilmu8', 1, 3, '2014-08-01 04:39:35'),
+(2, 'Membuat Website Canggih dengan jQuery untuk pemula', 'Toni Kun2', 'mediakita', 1, 2, '2014-08-01 04:40:08'),
 (3, 'Membuat Aplikasi GPS & Suara Antrian dengan PHP', 'Ronal Rusli', 'Toko Media', NULL, 4, '2014-07-15 11:26:32'),
-(4, 'Pemrograman web dengan HTML Revisi Ketiga', 'Betha Sidik, Ir-Husni I. Pohan. Ir., M.Eng', 'Informatika', NULL, 4, '2014-07-16 00:00:00');
+(4, 'Pemrograman web dengan HTML Revisi Ketiga', 'Betha Sidik, Ir-Husni I. Pohan. Ir., M.Eng', 'Informatika', NULL, 3, '2014-07-16 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kategori`
+--
+
+CREATE TABLE IF NOT EXISTS `kategori` (
+  `id` int(2) NOT NULL AUTO_INCREMENT,
+  `nama_kategori` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `kategori`
+--
+
+INSERT INTO `kategori` (`id`, `nama_kategori`) VALUES
+(1, 'Ilmu Komputer'),
+(3, 'estssetsts');
 
 -- --------------------------------------------------------
 
@@ -80,16 +100,20 @@ CREATE TABLE IF NOT EXISTS `peminjaman` (
   `id_buku` int(3) NOT NULL,
   `tgl_pinjam` date DEFAULT NULL,
   `tgl_balik` date DEFAULT NULL,
-  `denda` varchar(10) DEFAULT NULL,
+  `status` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `peminjaman`
 --
 
-INSERT INTO `peminjaman` (`id`, `nis`, `id_buku`, `tgl_pinjam`, `tgl_balik`, `denda`) VALUES
-(1, '12345', 1, '2014-07-05', '2014-07-20', '10000');
+INSERT INTO `peminjaman` (`id`, `nis`, `id_buku`, `tgl_pinjam`, `tgl_balik`, `status`) VALUES
+(7, '12345', 1, '2014-07-25', '2014-07-25', 0),
+(9, '12345', 2, '2013-07-30', '2013-07-31', 1),
+(8, '12345', 4, '2014-07-25', '2014-08-01', 1),
+(10, '12345', 3, '2014-06-29', '2014-06-30', 1),
+(11, '123456', 1, '2014-07-28', '2014-07-30', 1);
 
 -- --------------------------------------------------------
 
@@ -103,13 +127,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(32) NOT NULL,
   `level` int(2) NOT NULL,
   `name` varchar(32) NOT NULL,
+  `jk` enum('L','P') DEFAULT NULL,
+  `alamat` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `nis`, `password`, `level`, `name`) VALUES
-(1, '12345', '827ccb0eea8a706c4c34a16891f84e7b', 1, 'Fikri'),
-(2, '123456', '827ccb0eea8a706c4c34a16891f84e7b', 10, 'Admin');
+INSERT INTO `users` (`id`, `nis`, `password`, `level`, `name`, `jk`, `alamat`) VALUES
+(1, '12345', '827ccb0eea8a706c4c34a16891f84e7b', 1, 'Fikri', NULL, ''),
+(2, '123456', '827ccb0eea8a706c4c34a16891f84e7b', 10, 'Admin', NULL, ''),
+(4, '12110775', '827ccb0eea8a706c4c34a16891f84e7b', 10, 'Fikri', 'L', 'Jalan Jalan'),
+(5, '18110684', 'e10adc3949ba59abbe56e057f20f883e', 1, 'Yopita', 'P', 'ugiuub');
