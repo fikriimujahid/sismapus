@@ -259,11 +259,12 @@ class buku extends CI_Controller {
 					} else if($booking['id'] != null) {
 						$cek = GetQuery("id", "booking", 'id_buku = '.$id_buku.' && nis = '.$nis.'')->row_array();
 						if($cek == null) {
-							$stock = GetQuery("stock", "buku", 'id = '.$id_buku.'')->row_array();
-							if($stock == "0") {
+							$stock2 = GetQuery("stock", "buku", 'id = '.$id_buku.'')->row_array();
+							//print_r($stock2);
+							if($stock2['stock'] == "0") {
 								$this->session->set_flashdata('flash_message','Buku Sedang Dibooking');
 								redirect(base_url()."index.php/buku/peminjaman_manual");								
-							} else if($stock != "0") {
+							} else if($stock2['stock'] > "0") {
 								$tgl_balik 	= date("Y-m-d",strtotime("+1 week"));
 								$tgl_pinjam = date("Y-m-d");
 								Insert("peminjaman", array(
@@ -282,7 +283,8 @@ class buku extends CI_Controller {
 									), array("id" => "where/".$id_buku));								
 
 								$this->session->set_flashdata('flash_message','Buku Berhasil Dipinjam');
-								redirect(base_url()."index.php/buku/peminjaman_manual");										
+								redirect(base_url()."index.php/buku/peminjaman_manual");
+								//print_r($stock2);										
 							}
 						} else if($cek != null) {
 							$tgl_balik 	= date("Y-m-d",strtotime("+1 week"));
