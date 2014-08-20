@@ -32,12 +32,14 @@ class buku extends CI_Controller {
 		$id_buku 	= $id;
 		$nis	 	= $this->session->userdata('nis');
 		$tgl_balik 	= date("Y-m-d",strtotime("+1 week"));
+		$expired 	= date("Y-m-d",strtotime("+2 week"));
 
 		Insert("booking", array(
 			"id" 	   	=> NULL,
 			"nis"		=> $nis,
 			"id_buku"	=> $id_buku,
-			"tgl_balik"	=> $tgl_balik
+			"tgl_balik"	=> $tgl_balik,
+			"expired"	=> $expired
 			));
 		
 		$this->session->set_flashdata('flash_message','Booking buku berhasil');
@@ -282,7 +284,7 @@ class buku extends CI_Controller {
 									
 								Update("buku", array(
 									"stock"	=> $stock_buku
-									), array("id" => "where/".$id_buku));								
+									), array("id" => "where/".$id_buku));
 
 								$this->session->set_flashdata('flash_message','Buku Berhasil Dipinjam');
 								redirect(base_url()."index.php/buku/peminjaman_manual");
@@ -347,7 +349,7 @@ class buku extends CI_Controller {
 					$this->db->update('peminjaman', $data_buku);
 					
 					$this->session->set_flashdata('flash_message','Buku Berhasil Dikembalikan');
-					redirect(base_url()."index.php/buku/pengembalian_buku");									
+					redirect(base_url()."index.php/buku/pengembalian_buku");
 				}			
 			}
 		} if(!$this->session->userdata("level")){		
