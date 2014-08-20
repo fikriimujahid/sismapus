@@ -24,7 +24,6 @@ class laporan extends CI_Controller {
 		$tabul		= $post['tahun'].'-'.$post['bulan'];
 		$laporan 	= $this->model_laporan->laporan($tabul);
 		
-		$data['tabul']			= $tabul;
 		$data['pencarian']		= $laporan->result_array();
 		$data["main_content"]	= "laporan";
 		$this->load->view("main/template", $data);
@@ -33,7 +32,10 @@ class laporan extends CI_Controller {
 	function print_laporan($tabul){
 		$this->load->model('model_laporan');
 		$laporan 	= $this->model_laporan->laporan($tabul);
+		$arr_tabul = explode('-',$tabul);
+		(is_array($arr_tabul)) ? $arr_tabul = $arr_tabul : $arr_tabul = array($id_tabul);
 		
+		$data['tabul']			= $arr_tabul;
 		$data['pencarian']		= $laporan->result_array();
 		$this->load->view("print_laporan", $data);
 	}

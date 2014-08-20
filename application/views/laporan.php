@@ -27,7 +27,7 @@
 	</form>
 </div>
 <?php if($pencarian != null){ ?>
-<center><a href="<?php echo base_url()."index.php/laporan/print_laporan/".$tabul; ?>">Print Laporan</a></center>
+<center><a class="btnprint" href="<?php echo base_url()."index.php/laporan/print_laporan/".$tabul; ?>">Print Laporan</a></center>
 <div class="isiuser">
     <ul>
         <li>ID Buku</li>
@@ -52,7 +52,7 @@
     </ul>
     <!-- while looping-->
     <ul class="isilooping">
-	        <li rowspan='3'>Tidak ada peminjaman</li>
+	        <li class="kosong">Tidak ada peminjaman</li>
      </ul>
 </div>	
 <?php } ?>
