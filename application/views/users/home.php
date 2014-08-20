@@ -69,7 +69,7 @@
             
         </div>
         <?php } if ($this->session->userdata('level') == '10'){ ?>
-        
+            <p class="welcadm">Selamat Datang di <br> Sistem Manajeman Perpustakaan Online</p>
         <?php } ?>
     </div>
 </div>

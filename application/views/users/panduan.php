@@ -3,7 +3,7 @@
 	body {
 		font-family:Arial, Helvetica, sans-serif;
 		font-size:12px;
-		margin:30px }
+		 }
 	.pagetitle {
 		font-size:16px }
 	.sectiontitle {

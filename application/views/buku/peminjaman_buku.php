@@ -26,7 +26,7 @@
 	        <li><?php echo $value['judul'] ?></li>
 	        <li><?php echo $value['pengarang'] ?></li>
 	        <li><?php echo $value['penerbit'] ?></li>
-	        <li><?php echo $value['kategori'] ?></li>
+	        <li><?php $kategori = GetQuery('nama_kategori', 'kategori', "id = '".$value['kategori']."'")->row_array(); echo $kategori['nama_kategori'] ?></li>
 	        <li><?php echo $value['stock'] ?></li>
 	        <li><?php if($value['stock'] == 0) {
 	        	$tgl_balik = GetQuery("tgl_balik", "booking", 'id_buku = '.$value['id'].'')->result_array();
