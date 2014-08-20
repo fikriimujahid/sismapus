@@ -255,9 +255,7 @@ class buku extends CI_Controller {
 							Update("buku", array(
 								"stock"	=> $stock
 								), array("id" => "where/".$id_buku));
-							$this->session->set_flashdata('flash_message','Buku Berhasil Dipinjam');
-							redirect(base_url()."index.php/buku/peminjaman_manual");									
-						}												
+						}							
 					} else if($booking['id'] != null) {
 						$cek = GetQuery("id", "booking", 'id_buku = '.$id_buku.' && nis = '.$nis.'')->row_array();
 						if($cek == null) {
