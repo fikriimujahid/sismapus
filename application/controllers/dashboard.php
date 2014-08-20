@@ -43,7 +43,24 @@ class dashboard extends CI_Controller {
 		} if($this->session->userdata("level") == '10'){
 			$data["main_content"]	= "users/home";
 			$this->load->view("main/template", $data);
+			$booking = GetQuery("*", "booking")->result_array();
 			
+			foreach ($booking as $bookings) {
+				if ($bookings['expired'] <= date('Y-m-d')) {
+					$id_buku = $bookings['id_buku'];
+					$id = $bookings['id'];
+				
+					$stock_buku = GetQuery("stock", "buku", 'id = '.$id_buku.'')->row_array();
+					$stock_buku = $stock_buku['stock'] + 1;
+						
+					Update("buku", array(
+						"stock"	=> $stock_buku
+						), array("id" => "where/".$id_buku));
+					
+				$this->load->model('model_buku');
+				$this->model_buku->delete('booking',$id);
+				}				
+			}			
 		} if(!$this->session->userdata("level")){		
 			$data["main_content"]	= "users/login";
 			$this->load->view("main/template", $data);
